@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Café - 굿 휴식</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 헤더 */
+        header {
+            background-color: #2c1810;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4a574;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a574;
+        }
+
+        /* 메인 배너 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a3428" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #d4a574;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b8935f;
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            padding: 4rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c1810;
+        }
+
+        /* 소개 섹션 */
+        .about {
+            background-color: #f9f5f0;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* 메뉴 섹션 */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h3 {
+            color: #2c1810;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: #d4a574;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 위치 섹션 */
+        .location {
+            background-color: #f9f5f0;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info-box h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #2c1810;
+            color: white;
+            text-align: center;
+            padding: 2rem 20px;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #d4a574;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav>
+            <div class="logo">☕ Cozy Café</div>
+            <ul>
+                <li><a href="#home">홈</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#menu">메뉴</a></li>
+                <li><a href="#location">위치</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 배너 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>당신의 완벽한 휴식 공간</h1>
+            <p>신선한 원두와 따뜻한 분위기에서 특별한 시간을 경험하세요</p>
+            <a href="#menu" class="btn">메뉴 보기</a>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="about">
+        <h2>Cozy Café 소개</h2>
+        <div class="about-content">
+            <p>
+                2020년부터 여러분과 함께해온 Cozy Café는 
+                최고급 원두와 정성스러운 손길로 만든 커피를 제공합니다.
+            </p>
+            <p style="margin-top: 1rem;">
+                편안한 분위기 속에서 친구, 가족과 함께 
+                소중한 시간을 보내실 수 있는 공간을 만들어갑니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 메뉴 섹션 -->
+    <section id="menu" class="menu">
+        <h2>인기 메뉴</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-icon">☕</div>
+                <h3>아메리카노</h3>
+                <p>깊고 진한 에스프레소의 풍미</p>
+                <div class="price">4,500원</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">🥤</div>
+                <h3>카페라떼</h3>
+                <p>부드러운 우유와 에스프레소의 조화</p>
+                <div class="price">5,000원</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">🍰</div>
+                <h3>시그니처 케이크</h3>
+                <p>매일 아침 신선하게 구워내는 수제 케이크</p>
+                <div class="price">6,500원</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">🧋</div>
+                <h3>밀크티</h3>
+                <p>진한 홍차와 달콤한 밀크의 만남</p>
+                <div class="price">5,500원</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 위치/영업시간 섹션 -->
+    <section id="location" class="location">
+        <h2>찾아오시는 길</h2>
+        <div class="location-content">
+            <div class="info-box">
+                <h3>📍 주소</h3>
+                <p>봉담읍1123 123</p>
+                <p>아아아으아오 </p>
+                <p style="margin-top: 1rem;">지하철 2호선 강남역 3번 출구</p>
+                <p>도보 10분 거리</p>
+            </div>
+            <div class="info-box">
+                <h3>⏰ 영업시간</h3>
+                <p><strong>평일:</strong> 08:00 - 22:00</p>
+                <p><strong>주말:</strong> 10:00 - 23:00</p>
+                <p style="margin-top: 1rem;"><strong>전화:</strong> 02-1234-5678</p>
+                <p><strong>브레이크타임:</strong> 없음</p>
+            </div>
+            <div class="info-box">
+                <h3>ℹ️ 편의시설</h3>
+                <p>✓ 무료 Wi-Fi</p>
+                <p>✓ 주차 가능 (2시간)</p>
+                <p>✓ 반려동물 동반 가능</p>
+                <p>✓ 단체석 예약 가능</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 Cozy Café. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Blog</a>
+        </div>
+    </footer>
+</body>
+</html>
